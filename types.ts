@@ -88,6 +88,6 @@ export function isChatRoom(obj: CosmicObject): obj is ChatRoom {
   return obj.type === 'rooms';
 }
 
-// Utility types
-export type OptionalMetadata<T> = Partial<T['metadata']>;
+// Utility types - Fixed to constrain T to objects with metadata property
+export type OptionalMetadata<T extends { metadata: any }> = Partial<T['metadata']>;
 export type CreateMessageData = Omit<ChatMessage, 'id' | 'created_at' | 'modified_at'>;
